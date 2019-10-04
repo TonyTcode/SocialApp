@@ -14,12 +14,14 @@ import Posts from '../posts/Posts';
 import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
+import News from '../news/News';
 
 const Routes = () => {
   return (
     <section className='container'>
       <Alert />
       <Switch>
+        <Route exact path='/News' component={News} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/profiles' component={Profiles} />
