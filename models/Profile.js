@@ -18,6 +18,10 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  gameconsole: {
+    type: String,
+    required: true
+  },
   skills: {
     type: [String],
     required: true

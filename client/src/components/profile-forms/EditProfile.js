@@ -16,6 +16,7 @@ const EditProfile = ({
     location: '',
     status: '',
     skills: '',
+    gameconsole: '',
     bio: '',
     twitter: '',
     facebook: '',
@@ -35,6 +36,7 @@ const EditProfile = ({
       location: loading || !profile.location ? '' : profile.location,
       status: loading || !profile.status ? '' : profile.status,
       skills: loading || !profile.skills ? '' : profile.skills.join(','),
+      gameconsole: loading || !profile.skills ? '' : profile.gameconsole,
       bio: loading || !profile.bio ? '' : profile.bio,
       twitter: loading || !profile.social ? '' : profile.social.twitter,
       facebook: loading || !profile.social ? '' : profile.social.facebook,
@@ -50,6 +52,7 @@ const EditProfile = ({
     location,
     status,
     skills,
+    gameconsole,
     bio,
     twitter,
     facebook,
@@ -90,6 +93,21 @@ const EditProfile = ({
           </small>
         </div>
         <div className='form-group'>
+          <select
+            name='gameconsole'
+            value={gameconsole}
+            onChange={e => onChange(e)}
+          >
+            <option>* Select Console</option>
+            <option value='Vintage'>Vintage</option>
+            <option value='PS4'>PS4</option>
+            <option value='Xbox One'>Xbox One</option>
+            <option value='Steam Box'>Steam Box</option>
+            <option value='PC Master Race'>PC Master Race</option>
+          </select>
+          <small className='form-text'>Give us an idea what you game on</small>
+        </div>
+        <div className='form-group'>
           <input
             type='text'
             placeholder='Company'
@@ -98,7 +116,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Could be your own company or one you work for
+            Could be your game company or gaming team
           </small>
         </div>
         <div className='form-group'>

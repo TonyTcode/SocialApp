@@ -16,6 +16,7 @@ const Createprofile = ({
     location: '',
     status: '',
     skills: '',
+    gameconsole: '',
     bio: '',
     twitter: '',
     facebook: '',
@@ -29,6 +30,7 @@ const Createprofile = ({
     website,
     location,
     status,
+    gameconsole,
     skills,
     bio,
     twitter,
@@ -37,8 +39,10 @@ const Createprofile = ({
     youtube,
     instagram
   } = formData;
+
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   const onSubmit = e => {
     e.preventDefault();
     createProfile(formData, history);
@@ -72,6 +76,22 @@ const Createprofile = ({
           <small className='form-text'>
             Give us an idea of where your game at
           </small>
+        </div>
+
+        <div className='form-group'>
+          <select
+            name='gameconsole'
+            value={gameconsole}
+            onChange={e => onChange(e)}
+          >
+            <option>* Select Console</option>
+            <option value='Vintage'>Vintage</option>
+            <option value='PS4'>PS4</option>
+            <option value='Xbox One'>Xbox One</option>
+            <option value='Steam Box'>Steam Box</option>
+            <option value='PC Master Race'>PC Master Race</option>
+          </select>
+          <small className='form-text'>Give us an idea what you game on</small>
         </div>
         <div className='form-group'>
           <input

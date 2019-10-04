@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 router.get('/me', auth, async (req, res) => {
   try {
@@ -34,6 +35,9 @@ router.post(
       check('status', 'Status is required')
         .not()
         .isEmpty(),
+      check('gameconsole', 'Console is required')
+        .not()
+        .isEmpty(),
       check('skills', 'Skills is required')
         .not()
         .isEmpty()
@@ -51,6 +55,7 @@ router.post(
       location,
       bio,
       status,
+      gameconsole,
       githubusername,
       skills,
       youtube,
@@ -67,6 +72,7 @@ router.post(
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
+    if (gameconsole) profileFields.gameconsole = gameconsole;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
       profileFields.skills = skills.split(',').map(skill => skill.trim());
@@ -131,6 +137,8 @@ router.get('/user/:user_id', async (req, res) => {
 
 router.delete('/', auth, async (req, res) => {
   try {
+    await Post.deleteMany({ user: req.user.id });
+
     await Profile.findOneAndRemove({ user: req.user.id });
 
     await User.findOneAndRemove({ _id: req.user.id });
