@@ -89,7 +89,7 @@ const EditProfile = ({
             <option value='Other'>Other</option>
           </select>
           <small className='form-text'>
-            Give us an idea of where your game at
+            Give us an idea of where your game is at
           </small>
         </div>
         <div className='form-group'>

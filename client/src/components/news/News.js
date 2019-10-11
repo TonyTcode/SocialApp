@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './News.css';
 export default class News extends Component {
   constructor() {
     super();
@@ -21,16 +21,18 @@ export default class News extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         Latest Game News from IGN.com:
         {this.state.items.map(item => (
-          <li key={item.guid}>
-            <a target='_blank' rel='noopener noreferrer' href={item.link}>
-              {item.title}
-            </a>
-          </li>
+          <div className='newsLink'>
+            {' '}
+            <li key={item.guid}>
+              <a target='_blank' rel='noopener noreferrer' href={item.link}>
+                {item.title}
+              </a>
+            </li>{' '}
+          </div>
         ))}
         Visit daily for the newest news.
       </div>
